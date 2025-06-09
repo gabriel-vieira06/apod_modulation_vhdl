@@ -4,17 +4,17 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity modulator is
    port (
-      i_clk  : in std_logic;
-		o_sine : out std_logic_vector(7 downto 0)
+	   i_clk  : in std_logic;
+	   o_sine : out std_logic_vector(7 downto 0)
 	);
 end modulator;
 
 architecture Behavioral of modulator is
 
-	-- Senoide de 8 bits com 256 pontos
+   -- Senoide de 8 bits com 256 pontos
    type sine_table_type is array(0 to 255) of natural;
    constant sine_table : sine_table_type := (
-     127, 130, 133, 136, 139, 143, 146, 149,
+	  127, 130, 133, 136, 139, 143, 146, 149,
 	  152, 155, 158, 161, 164, 167, 170, 173,
 	  176, 179, 182, 184, 187, 190, 193, 195,
 	  198, 200, 203, 205, 208, 210, 213, 215,
@@ -63,7 +63,7 @@ begin
       end if;
    end process;
 	
-	-- Buscar valor da senoide
+   -- Buscar valor da senoide
    o_sine <= std_logic_vector(to_unsigned(sine_table(sine_index),8));
 
 end Behavioral;
