@@ -4,8 +4,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity level is
    port (
-      i_pwm   : in std_logic_vector(3 downto 0);
-		o_level : out std_logic_vector(2 downto 0)
+	   i_pwm   : in std_logic_vector(3 downto 0);
+	   o_level : out std_logic_vector(2 downto 0)
 	);
 end level;
 
@@ -25,6 +25,6 @@ begin
       level <= to_unsigned(count, 3);
    end process;
 
-	o_level <= std_logic_vector(level);
+   o_level <= std_logic_vector(level);
 	
 end Behavioral;
