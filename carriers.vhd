@@ -14,18 +14,18 @@ end carriers;
 
 architecture Behavioral of carriers is
 	
-	constant C_MAX_CNT     : natural                  := 255;
-	signal r_tri_cnt       : natural range 0 to 255   := 0;
+   constant C_MAX_CNT     : natural                  := 255;
+   signal r_tri_cnt       : natural range 0 to 255   := 0;
    signal r_up_down       : std_logic                := '1'; -- '1' = up, '0' = down
 	
 begin
 
-	o_carrier1   <= std_logic_vector(to_unsigned(r_tri_cnt / 4 + 192, 8));               -- 255 ↔ 192 
+   o_carrier1   <= std_logic_vector(to_unsigned(r_tri_cnt / 4 + 192, 8));               -- 255 ↔ 192 
    o_carrier2   <= std_logic_vector(to_unsigned((C_MAX_CNT - r_tri_cnt) / 4 + 128, 8)); -- 192 ↔ 128  DEFASADO EM 180°
-	o_carrier3   <= std_logic_vector(to_unsigned(r_tri_cnt / 4 + 64, 8));                -- 128 ↔ 64   
+   o_carrier3   <= std_logic_vector(to_unsigned(r_tri_cnt / 4 + 64, 8));                -- 128 ↔ 64   
    o_carrier4   <= std_logic_vector(to_unsigned((C_MAX_CNT - r_tri_cnt) / 4 + 0, 8));   -- 64 ↔ 0     DEFASADO EM 180°
 	 
-	-- Triangle wave generator
+   -- Triangle wave generator
    p_triangle_wave: process(i_clk)
    begin
 		if rising_edge(i_clk) then
